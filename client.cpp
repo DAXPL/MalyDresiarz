@@ -2,7 +2,6 @@
 #include <QCoreApplication>
 #include <QTextStream>
 #include <QTimer>
-#include <iostream>
 
 Client::Client(QObject *parent) : QObject(parent),socket(new QTcpSocket(this))
 {
@@ -24,5 +23,5 @@ void Client::sendMessage(const QString &message)
 void Client::onReadyRead()
 {
     QByteArray data = socket->readAll();
-    std::cout << "Received: " << (QString::fromUtf8(data)).toStdString() <<std::endl;
+    qDebug() << "Received: " << (QString::fromUtf8(data)).toStdString();
 }

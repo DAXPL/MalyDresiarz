@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->PlayerCreationWidget->setVisible(true);
     ui->GameResultWidget->setVisible(false);
     ui->GameplayWidget->setVisible(false);
+    ui->PlayerWaitingForGame->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -117,8 +118,26 @@ void MainWindow::on_endCreationButton_clicked()
 {
     ui->PlayerCreationWidget->setVisible(false);
     ui->GameResultWidget->setVisible(false);
+    ui->GameplayWidget->setVisible(false);
+    ui->PlayerWaitingForGame->setVisible(true);
+
+    bool isHost = ui->isHostCheckbox->isChecked();
+    QString ip = ui->ServerIP->text();
+    if(isHost)
+    {
+        server.startServer();
+    }else{
+        ui->StartGameButton->setVisible(false);
+    }
+    client.connectToServer(ip, 1234);
+}
+
+void MainWindow::on_StartGameButton_clicked()
+{
+    ui->PlayerCreationWidget->setVisible(false);
+    ui->GameResultWidget->setVisible(false);
     ui->GameplayWidget->setVisible(true);
+    ui->PlayerWaitingForGame->setVisible(false);
 
     setPlayerUI();
 }
-

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-
+/*
     Server server;
     server.startServer();
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     QTimer::singleShot(2000, [&client](){ client.sendMessage("Hello, server!"); });
     QTimer::singleShot(4000, [&client](){ client.sendMessage("How are you?"); });
     QTimer::singleShot(6000, [&client](){ client.sendMessage("This is a test message."); });
-
+*/
 
     return a.exec();
 }

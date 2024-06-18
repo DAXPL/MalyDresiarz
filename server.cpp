@@ -29,11 +29,11 @@ void Server::onReadyRead()
 {
     QTcpSocket *client = qobject_cast<QTcpSocket *>(sender());
     QByteArray data = client->readAll();
+    qDebug() << "Server got data: " << QString::fromUtf8(data);
 
-    for (QTcpSocket *otherClient : clients) {
-        if (otherClient != client) {
+    for (QTcpSocket *otherClient : clients)
+    {
             otherClient->write(data);
-        }
     }
 }
 
