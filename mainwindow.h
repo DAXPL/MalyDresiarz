@@ -35,18 +35,20 @@ private slots:
 
     void on_StartGameButton_clicked();
 
+public slots:
+    void onSetPlayerUI();
+    void onShowFinalResult(std::string result);
+
 private:
     Ui::MainWindow *ui;
     int currentPlayer {0};
     int roundCounter {1};
 
-    void setPlayerUI();
     void EndPlayerMove();
 
-    Server server;
-    //server.startServer();
+    bool canMove{false};
 
+    Server server;
     Client client;
-    //client.connectToServer("127.0.0.1", 1234);
 };
 #endif // MAINWINDOW_H
