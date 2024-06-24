@@ -19,8 +19,12 @@ void Client::connectToServer(const QString &host, quint16 port)
 
 void Client::sendMessage(const QString &message)
 {
+    std::string s = message.toStdString() + ";";
+    QString formatedMsg = QString::fromStdString(s);
+
+
     if(socket->state() == QAbstractSocket::ConnectedState) {
-        socket->write(message.toUtf8());
+        socket->write(formatedMsg.toUtf8());
     }
 }
 
@@ -49,6 +53,11 @@ void Client::onReadyRead()
     {
         qDebug() << "UPDATE UI!";
         emit updateUISignal();
+    }
+    else if(command[0]=="ivanAction")
+    {
+        qDebug() << "Ivan";
+        emit ivanAction();
     }
     else if(command[0]=="getWinner")
     {

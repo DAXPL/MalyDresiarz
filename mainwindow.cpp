@@ -50,11 +50,12 @@ void MainWindow::on_BMWButton_clicked()
 void MainWindow::on_IvanButton_clicked()
 {
     if(canMove==false)return;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DODAC DO SERWERA
+
     for(int i = 0; i<players.size();i++)
     {
         if(i != currentPlayer) players.at(i)->IwanAction();
     }
+    client.sendMessage(QString("ivan"));
     EndPlayerMove();
 }
 
@@ -115,8 +116,14 @@ void MainWindow::EndPlayerMove()
         std::string s = "current|"+players.at(currentPlayer)->playerName;
         client.sendMessage(QString::fromStdString(s));
     }
+}
 
-    //setPlayerUI();
+void MainWindow::on_Ivan()
+{
+    for(int i = 0; i<players.size();i++)
+    {
+        players.at(i)->IwanAction();
+    }
 }
 
 void MainWindow::onShowFinalResult(std::string result)
@@ -151,8 +158,10 @@ void MainWindow::on_endCreationButton_clicked()
     if(isHost)
     {
         server.startServer();
+        ui->WaitingLabel->setText(QString("Rozpocznij grę!"));
     }else{
         ui->StartGameButton->setVisible(false);
+        ui->WaitingLabel->setText(QString("Oczekiwanie na hosta!"));
     }
 
     client.SetPlayerListReference(&players);
@@ -166,9 +175,9 @@ void MainWindow::on_StartGameButton_clicked()
     ui->GameplayWidget->setVisible(true);
     ui->PlayerWaitingForGame->setVisible(false);
 
-
     connect(&client,&Client::updateUISignal,this,&MainWindow::onSetPlayerUI);
     connect(&client,&Client::showFinalResult,this,&MainWindow::onShowFinalResult);
+    connect(&client,&Client::ivanAction,this,&MainWindow::on_Ivan);
 
     client.sendMessage(QString("startGame"));
 }

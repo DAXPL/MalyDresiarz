@@ -18,6 +18,7 @@ class Client: public QObject
 
     signals:
         void updateUISignal();
+        void ivanAction();
         void showFinalResult(std::string result);
 
     private slots:

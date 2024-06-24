@@ -30,59 +30,76 @@ void Server::onReadyRead()
     QTcpSocket *client = qobject_cast<QTcpSocket *>(sender());
     QString data = QString::fromUtf8(client->readAll());
 
-    //qDebug() << "[Server] Got data: " << data;
-    QStringList args =  data.split("|");
-    if(args.length()<=0) return;
+    qDebug() << "[Server] Got data: " << data;
+    QStringList messages =  data.split(";");
 
-    std::string command = args[0].toStdString();
+    for(int i = 0; i< messages.count(); i++)
+    {
+        QStringList args =  messages[i].split("|");
+        if(args.length()<=0) return;
 
-    //dodac liczenie argumentow
-    if(command=="pass")
-    {
-        PassToken();
-    }
-    else if(command=="startGame")
-    {
-        qDebug() << "[Server] Starting game";
-        tourCounter=0;
-        currentClientTour=-1;
-        PassToken();
-    }
-    else if(command=="current")
-    {
-        qDebug() << "[Server] NextPlayer:" << args[1];
-        NextPlayer();
-    }
-    else if(command=="winner")
-    {
-        qDebug() << "[Server] Highest score has" << args[1] <<" : "<<args[2];
-        bool parseScore = false;
-        int score = args[2].toInt(&parseScore);
+        std::string command = args[0].toStdString();
 
-        if(parseScore)
+        //dodac liczenie argumentow
+        if(command=="pass")
         {
-            reportedWinners ++;
-            if(score > reportedWinnerScore)
-            {
-                reportedWinnerScore = score;
-                reportedWinner = args[1];
-            }
-            else if(score == reportedWinnerScore)
-            {
-                reportedWinner += "&"+args[1];
-            }
+            PassToken();
         }
-
-        if(reportedWinners>=clients.count())
+        else if(command=="startGame")
         {
-            qDebug() << "[Server] Game was won by" << reportedWinner <<" : "<<reportedWinnerScore;
+            qDebug() << "[Server] Starting game";
+            tourCounter=0;
+            currentClientTour=-1;
+            PassToken();
+        }
+        else if(command=="current")
+        {
+            qDebug() << "[Server] NextPlayer:" << args[1];
+            NextPlayer();
+        }
+        else if(command=="ivan")
+        {
+            qDebug() << "[Server] IVAN!";
             for(int i=0;i<clients.length();i++)
             {
-                std::string message= "showWinner|"+reportedWinner.toStdString();
-                clients[i]->write(QString::fromStdString(message).toUtf8());
+                if(clients[i] != client)
+                {
+                    clients[i]->write(QString("ivanAction").toUtf8());
+                }
+            }
+        }
+        else if(command=="winner")
+        {
+            qDebug() << "[Server] Highest score has" << args[1] <<" : "<<args[2];
+            bool parseScore = false;
+            int score = args[2].toInt(&parseScore);
+
+            if(parseScore)
+            {
+                reportedWinners ++;
+                if(score > reportedWinnerScore)
+                {
+                    reportedWinnerScore = score;
+                    reportedWinner = args[1];
+                }
+                else if(score == reportedWinnerScore)
+                {
+                    reportedWinner += "&"+args[1];
+                }
+            }
+
+            if(reportedWinners>=clients.count())
+            {
+                qDebug() << "[Server] Game was won by" << reportedWinner <<" : "<<reportedWinnerScore;
+                for(int i=0;i<clients.length();i++)
+                {
+                    std::string message= "showWinner|"+reportedWinner.toStdString();
+                    clients[i]->write(QString::fromStdString(message).toUtf8());
+                }
             }
         }
     }
+
 }
 
 void Server::onClientDisconnected()

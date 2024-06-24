@@ -38,6 +38,7 @@ private slots:
 public slots:
     void onSetPlayerUI();
     void onShowFinalResult(std::string result);
+    void on_Ivan();
 
 private:
     Ui::MainWindow *ui;
