@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <vector>
 #include "player.h"
+#include "client.h"
+#include "server.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,12 +33,24 @@ private slots:
 
     void on_endCreationButton_clicked();
 
+    void on_StartGameButton_clicked();
+
+public slots:
+    void onSetPlayerUI();
+    void onShowFinalResult(std::string result);
+    void on_Ivan();
+    void onConnectionToHub(std::string result);
+
 private:
     Ui::MainWindow *ui;
     int currentPlayer {0};
     int roundCounter {1};
 
-    void setPlayerUI();
     void EndPlayerMove();
+
+    bool canMove{false};
+
+    Server server;
+    Client client;
 };
 #endif // MAINWINDOW_H
