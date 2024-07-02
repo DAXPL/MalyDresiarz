@@ -159,6 +159,7 @@ void MainWindow::on_endCreationButton_clicked()
     {
         server.startServer();
         ui->WaitingLabel->setText(QString("Rozpocznij grę!"));
+        connect(&server,&Server::ConnectionToHub,this,&MainWindow::onConnectionToHub);
     }else{
         ui->StartGameButton->setVisible(false);
         ui->WaitingLabel->setText(QString("Oczekiwanie na hosta!"));
@@ -180,4 +181,8 @@ void MainWindow::on_StartGameButton_clicked()
     connect(&client,&Client::ivanAction,this,&MainWindow::on_Ivan);
 
     client.sendMessage(QString("startGame"));
+}
+void MainWindow::onConnectionToHub(std::string result)
+{
+    ui->WaitingLabel->setText(ui->WaitingLabel->text() + QString::fromStdString(result+"\n"));
 }

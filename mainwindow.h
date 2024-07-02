@@ -39,6 +39,7 @@ public slots:
     void onSetPlayerUI();
     void onShowFinalResult(std::string result);
     void on_Ivan();
+    void onConnectionToHub(std::string result);
 
 private:
     Ui::MainWindow *ui;

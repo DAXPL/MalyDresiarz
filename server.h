@@ -14,6 +14,9 @@ public:
     Server(QObject *parent = nullptr);
     void startServer();
 
+signals:
+    void ConnectionToHub(std::string result);
+
 protected:
     void incomingConnection(qintptr socketDescriptor) override;
 

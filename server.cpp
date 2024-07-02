@@ -22,7 +22,9 @@ void Server::incomingConnection(qintptr socketDescriptor)
     connect(client, &QTcpSocket::readyRead, this, &Server::onReadyRead);
     connect(client, &QTcpSocket::disconnected, this, &Server::onClientDisconnected);
 
+    QString clientId = &"[Server] Client connected:" [ socketDescriptor] ;
     qDebug() << "[Server] Client connected:" << socketDescriptor;
+    emit ConnectionToHub(clientId.toStdString());
 }
 
 void Server::onReadyRead()
