@@ -61,6 +61,8 @@ void MainWindow::on_IvanButton_clicked()
 
 void MainWindow::onSetPlayerUI()
 {
+    ui->PlayerWaitingForGame->setVisible(false);
+    ui->GameplayWidget->setVisible(true);
     if(client.hasToken)
     {
         Player* curPlayer = players.at(currentPlayer);
@@ -167,6 +169,10 @@ void MainWindow::on_endCreationButton_clicked()
 
     client.SetPlayerListReference(&players);
     client.connectToServer(ip, 1234);
+
+    connect(&client,&Client::updateUISignal,this,&MainWindow::onSetPlayerUI);
+    connect(&client,&Client::showFinalResult,this,&MainWindow::onShowFinalResult);
+    connect(&client,&Client::ivanAction,this,&MainWindow::on_Ivan);
 }
 
 void MainWindow::on_StartGameButton_clicked()
@@ -176,12 +182,9 @@ void MainWindow::on_StartGameButton_clicked()
     ui->GameplayWidget->setVisible(true);
     ui->PlayerWaitingForGame->setVisible(false);
 
-    connect(&client,&Client::updateUISignal,this,&MainWindow::onSetPlayerUI);
-    connect(&client,&Client::showFinalResult,this,&MainWindow::onShowFinalResult);
-    connect(&client,&Client::ivanAction,this,&MainWindow::on_Ivan);
-
     client.sendMessage(QString("startGame"));
 }
+
 void MainWindow::onConnectionToHub(std::string result)
 {
     ui->WaitingLabel->setText(ui->WaitingLabel->text() + QString::fromStdString(result+"\n"));
