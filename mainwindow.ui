@@ -34,6 +34,7 @@
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>25</pointsize>
       </font>
      </property>
@@ -53,8 +54,13 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
-      <string>Lans</string>
+      <string>Lansuj się</string>
      </property>
     </widget>
     <widget class="QPushButton" name="RobotaButton">
@@ -66,8 +72,13 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
-      <string>Do roboty</string>
+      <string>Do roboty!</string>
      </property>
     </widget>
     <widget class="QPushButton" name="HaraczButton">
@@ -79,8 +90,13 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
-      <string>Haracz</string>
+      <string>Napadnij na sklep</string>
      </property>
     </widget>
     <widget class="QPushButton" name="BMWButton">
@@ -92,8 +108,13 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
-      <string>BMW</string>
+      <string>Ukradnij BMW</string>
      </property>
     </widget>
     <widget class="QPushButton" name="IvanButton">
@@ -105,8 +126,13 @@
        <height>101</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
-      <string>Ivan</string>
+      <string>Dzwoń po Ivana</string>
      </property>
     </widget>
     <widget class="QLabel" name="SzacunLabel">
@@ -118,8 +144,16 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="KasaLabel">
@@ -131,8 +165,16 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="BMLabel">
@@ -144,8 +186,16 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="HaraczLabel">
@@ -157,8 +207,104 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
       <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="BMLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>70</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Garaż</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HaraczLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>70</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Haracze</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="KasaLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>70</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Siano</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SzacunLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>70</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Szacun</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -182,6 +328,7 @@
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>50</pointsize>
       </font>
      </property>
@@ -216,6 +363,7 @@
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>24</pointsize>
       </font>
      </property>
@@ -237,12 +385,13 @@
       <rect>
        <x>280</x>
        <y>260</y>
-       <width>121</width>
+       <width>235</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>18</pointsize>
       </font>
      </property>
@@ -259,6 +408,11 @@
        <height>61</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
+     </property>
      <property name="text">
       <string>Dodaj gracza</string>
      </property>
@@ -271,6 +425,11 @@
        <width>231</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
      </property>
      <property name="text">
       <string>Graj!</string>
@@ -287,6 +446,7 @@
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>24</pointsize>
       </font>
      </property>
@@ -308,17 +468,70 @@
       <rect>
        <x>260</x>
        <y>501</y>
-       <width>231</width>
+       <width>235</width>
        <height>41</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>18</pointsize>
       </font>
      </property>
      <property name="text">
       <string>Host</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GameLabel">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1024</width>
+       <height>75</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>40</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Mały dresiarz</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GameLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>1024</width>
+       <height>75</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+       <pointsize>30</pointsize>
+       <italic>true</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Szanunek ludzi ulicy</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -342,6 +555,7 @@
      </property>
      <property name="font">
       <font>
+       <family>Comic Sans MS</family>
        <pointsize>50</pointsize>
       </font>
      </property>
@@ -363,6 +577,11 @@
        <width>231</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comic Sans MS</family>
+      </font>
      </property>
      <property name="text">
       <string>Graj!</string>
