@@ -114,10 +114,13 @@ void Server::PassToken()
     qDebug() << "[Server] Passing token";
     currentClientTour++;
 
+    std::string newRound = "|0";
+
     if(currentClientTour >= clients.length())
     {
         currentClientTour=0;
         tourCounter++;
+        newRound = "|1";
     }
 
     if(tourCounter>=roundsToPlay)
@@ -126,16 +129,17 @@ void Server::PassToken()
     }
     else
     {
+        //Przesłanie informacji o nowym tokenie i czy jest to nowa runda
         for(int i=0;i<clients.length();i++)
         {
             if(i==currentClientTour)
             {
-                clients[i]->write(QString("setToken|1").toUtf8());
+                clients[i]->write(QString(("setToken|1"+newRound).c_str()).toUtf8());
             }
             else
             {
-                clients[i]->write(QString("setToken|0").toUtf8());
-            }
+                clients[i]->write(QString(("setToken|0"+newRound).c_str()).toUtf8());
+            }       
         }
     }
 }

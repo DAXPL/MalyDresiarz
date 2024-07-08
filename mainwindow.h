@@ -39,6 +39,7 @@ private slots:
 
 public slots:
     void onSetPlayerUI();
+    void onNewRound();
     void onShowFinalResult(std::string result);
     void on_Ivan();
     void onConnectionToHub(std::string result);

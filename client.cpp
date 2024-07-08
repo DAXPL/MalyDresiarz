@@ -45,9 +45,17 @@ void Client::onReadyRead()
         {
             hasToken = 0;
         }
-
         qDebug() << "Token updated! " << hasToken;
+
+        if(command[2]=="1")
+        {
+            qDebug() << "To nowa runda!! " << hasToken;
+            emit newRoundSignal();
+        }
+
         emit updateUISignal();
+
+
     }
     else if(command[0]=="startMove")
     {

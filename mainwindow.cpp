@@ -181,6 +181,7 @@ void MainWindow::on_endCreationButton_clicked()
     client.connectToServer(ip, 1234);
 
     connect(&client,&Client::updateUISignal,this,&MainWindow::onSetPlayerUI);
+    connect(&client,&Client::newRoundSignal,this,&MainWindow::onNewRound);
     connect(&client,&Client::showFinalResult,this,&MainWindow::onShowFinalResult);
     connect(&client,&Client::ivanAction,this,&MainWindow::on_Ivan);
 }
@@ -206,3 +207,11 @@ void MainWindow::on_isHostCheckbox_stateChanged(int arg1)
     ui->ServerIP->setDisabled(arg1 != 0);
 }
 
+void MainWindow::onNewRound()
+{
+    qDebug() << "New round";
+    for(int i = 0; i<players.size();i++)
+    {
+        players.at(i)->OnRoundStart();
+    }
+}
