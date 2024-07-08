@@ -28,7 +28,7 @@ private:
     QList<QTcpSocket *> clients;
     int currentClientTour {0};
     int tourCounter {0};
-    int roundsToPlay {3};
+    int roundsToPlay {10};
 
     int reportedWinners {0};
     int reportedWinnerScore {0};

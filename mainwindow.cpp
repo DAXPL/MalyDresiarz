@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->GameResultWidget->setVisible(false);
     ui->GameplayWidget->setVisible(false);
     ui->PlayerWaitingForGame->setVisible(false);
+    ui->endCreationButton->setDisabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -134,6 +135,7 @@ void MainWindow::onShowFinalResult(std::string result)
     ui->GameResultWidget->setVisible(true);
     ui->GameplayWidget->setVisible(false);
 
+    result = "Wygrana: \n" + result;
     ui->ResultLabel->setText(QString::fromStdString(result));
 }
 
@@ -145,6 +147,7 @@ void MainWindow::on_addPlayerButton_clicked()
     players.push_back(new Player(newName,isRobot));
 
     ui->PlayerNameEdit->setText("Nazwa gracza");
+    ui->endCreationButton->setDisabled(false);
 }
 
 void MainWindow::on_endCreationButton_clicked()
@@ -189,3 +192,9 @@ void MainWindow::onConnectionToHub(std::string result)
 {
     ui->WaitingLabel->setText(ui->WaitingLabel->text() + QString::fromStdString(result+"\n"));
 }
+
+void MainWindow::on_isHostCheckbox_stateChanged(int arg1)
+{
+    ui->ServerIP->setDisabled(arg1 != 0);
+}
+

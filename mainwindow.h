@@ -35,6 +35,8 @@ private slots:
 
     void on_StartGameButton_clicked();
 
+    void on_isHostCheckbox_stateChanged(int arg1);
+
 public slots:
     void onSetPlayerUI();
     void onShowFinalResult(std::string result);
