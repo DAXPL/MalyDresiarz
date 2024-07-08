@@ -51,13 +51,7 @@ void MainWindow::on_BMWButton_clicked()
 void MainWindow::on_IvanButton_clicked()
 {
     if(canMove==false)return;
-
-    for(int i = 0; i<players.size();i++)
-    {
-        if(i != currentPlayer) players.at(i)->IwanAction();
-    }
     client.sendMessage(QString("ivan"));
-    EndPlayerMove();
 }
 
 void MainWindow::onSetPlayerUI()
@@ -123,11 +117,24 @@ void MainWindow::EndPlayerMove()
 
 void MainWindow::on_Ivan()
 {
-    for(int i = 0; i<players.size();i++)
+    qDebug() << "IVAN COME TO TOWN!";
+    if(client.hasToken == false)
     {
-        players.at(i)->IwanAction();
+        for(int i = 0; i<players.size();i++)
+        {
+            players.at(i)->IwanAction();
+        }
+    }
+    else
+    {
+        for(int i = 0; i<players.size();i++)
+        {
+            if(i != currentPlayer) players.at(i)->IwanAction();
+        }
+        EndPlayerMove();
     }
 }
+
 
 void MainWindow::onShowFinalResult(std::string result)
 {
@@ -190,7 +197,8 @@ void MainWindow::on_StartGameButton_clicked()
 
 void MainWindow::onConnectionToHub(std::string result)
 {
-    ui->WaitingLabel->setText(ui->WaitingLabel->text() + QString::fromStdString(result+"\n"));
+    //Cant pass ID after some patch
+    //ui->WaitingLabel->setText(ui->WaitingLabel->text() + QString::fromStdString(result+"\n"));
 }
 
 void MainWindow::on_isHostCheckbox_stateChanged(int arg1)

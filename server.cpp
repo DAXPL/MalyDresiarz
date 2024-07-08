@@ -61,13 +61,9 @@ void Server::onReadyRead()
         }
         else if(command=="ivan")
         {
-            qDebug() << "[Server] IVAN!";
             for(int i=0;i<clients.length();i++)
             {
-                if(clients[i] != client)
-                {
-                    clients[i]->write(QString("ivanAction").toUtf8());
-                }
+                clients[i]->write(QString("ivanAction").toUtf8());
             }
         }
         else if(command=="winner")
